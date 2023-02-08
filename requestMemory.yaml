@@ -1,0 +1,175 @@
+pipetask:
+  selectGoodSeeingVisits:
+    requestMemory: 4096.0
+  makeVisitTable:
+    requestMemory: 4096.0
+  consolidateDiaSourceTable:
+    requestMemory: 4096
+  makeCcdVisitTable:
+    requestMemory: 4096
+  AB1:
+    requestMemory: 4096
+  drpAssociation:
+    requestMemory: 4096
+  drpDiaCalculation:
+    requestMemory: 4096
+  skyObjectStd:
+    requestMemory: 4096
+  skyObjectMean:
+    requestMemory: 4096.0
+  mergeDetections:
+    requestMemory: 4096.0
+  transformForcedSourceOnDiaObjectTable:
+    requestMemory: 4096.0
+  consolidateHealSparsePropertyMaps:
+    requestMemory: 4096.0
+  forcedPhotCcdOnDiaObjects:
+    requestMemory: 4096.0
+  forcedPhotDiffOnDiaObjects:
+    requestMemory: 4096.0
+  writeForcedSourceOnDiaObjectTable:
+    requestMemory: 4096.0
+  consolidateAssocDiaSourceTable:
+    requestMemory: 4096.0
+  consolidateFullDiaObjectTable:
+    requestMemory: 4096.0
+  isolatedStarAssociation:
+    requestMemory: 4096.0
+  consolidateSourceTable:
+    requestMemory: 4096.0
+  consolidateVisitSummary:
+    requestMemory: 4096.0
+  finalizeCharacterization:
+    requestMemory: 4096.0
+  transformForcedSourceTable:
+    requestMemory: 4096.0
+  transformObjectTable:
+    requestMemory: 16384
+  nsrcMeasVisit:
+    requestMemory: 4096.0
+  TE4:
+    requestMemory: 4096.0
+  TE3:
+    requestMemory: 4096.0
+  transformSourceTable:
+    requestMemory: 4096.0
+  characterizeImage:
+    requestMemory: 4096.0
+  calibrate:
+    requestMemory: 4096.0
+  writeSourceTable:
+    requestMemory: 4096.0
+  compareObjectToTruth:
+    requestMemory: 4096.0
+  AM2:
+    requestMemory: 4096.0
+  psfPhotRepStar4:
+    requestMemory: 4096.0
+  modelPhotRepStar1:
+    requestMemory: 4096.0
+  modelPhotRepGal1:
+    requestMemory: 4096.0
+  modelPhotRepStar4:
+    requestMemory: 4096.0
+  AF1:
+    requestMemory: 4096.0
+  psfPhotRepStar1:
+    requestMemory: 4096.0
+  modelPhotRepStar2:
+    requestMemory: 4096.0
+  PA1:
+    requestMemory: 4096.0
+  psfPhotRepStar2:
+    requestMemory: 4096.0
+  PF1:
+    requestMemory: 4096.0
+  modelPhotRepGal2:
+    requestMemory: 4096.0
+  AD3:
+    requestMemory: 4096.0
+  AD1:
+    requestMemory: 4096.0
+  AM3:
+    requestMemory: 4096.0
+  psfPhotRepStar3:
+    requestMemory: 4096.0
+  AD2:
+    requestMemory: 4096.0
+  AF2:
+    requestMemory: 4096.0
+  AF3:
+    requestMemory: 4096.0
+  modelPhotRepGal3:
+    requestMemory: 4096.0
+  modelPhotRepStar3:
+    requestMemory: 4096.0
+  AM1:
+    requestMemory: 4096.0
+  matchObjectToTruth:
+    requestMemory: 4096.0
+  transformDiaSourceCat:
+    requestMemory: 8192.0
+  forcedPhotDiffim:
+    requestMemory: 8192.0
+  subtractImages:
+    requestMemory: 8192.0
+  forcedPhotCcd:
+    requestMemory: 8192.0
+  TE1:
+    requestMemory: 46000.0
+  TE2:
+    requestMemory: 46000.0
+  assembleCoadd:
+    requestMemory: 16384.0
+  consolidateForcedSourceOnDiaObjectTable:
+    requestMemory: 18000.0
+  consolidateForcedSourceTable:
+    requestMemory: 120000.0
+  consolidateObjectTable:
+    requestMemory: 16384.0
+  deblend:
+    requestMemory: 16384.0
+  detectAndMeasureDiaSources:
+    requestMemory: 8192.0
+  detection:
+    requestMemory: 16384.0
+  forcedPhotCoadd:
+    requestMemory: 4096.0
+  getTemplate:
+    requestMemory: 8192.0
+  healSparsePropertyMaps:
+    requestMemory: 36000.0
+  imageDifference:
+    requestMemory: 4096.0
+  isr:
+    requestMemory: 3900.0
+  makeWarp:
+    requestMemory: 8192.0
+  matchCatalogsPatch:
+    requestMemory: 4096.0
+  matchCatalogsPatchMultiBand:
+    requestMemory: 130000.0
+  matchCatalogsTract:
+    requestMemory: 120000.0
+  matchCatalogsTractGxsSNR5to80:
+    requestMemory: 32768.0
+  matchCatalogsTractMag17to21p5:
+    requestMemory: 32768.0
+  matchCatalogsTractStarsSNR5to80:
+    requestMemory: 32768.0
+  measure:
+    requestMemory: 16384.0
+  mergeMeasurements:
+    requestMemory: 16384.0
+  modelPhotRepGal4:
+    requestMemory: 4096.0
+  templateGeneration:
+    requestMemory: 16384.0
+  templateGen:
+    requestMemory: 8192.0
+  wPerp:
+    requestMemory: 120000.0
+  writeForcedSourceTable:
+    requestMemory: 8192.0
+  writeObjectTable:
+    requestMemory: 16384.0

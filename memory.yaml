@@ -1,0 +1,3 @@
+butler_dir: /sdf/group/rubin/repo/dc2/
+result_dir: u/kuropatk/DM-37223/20221217T151113Z
+request_memory_file: /home/k/kuropatk/u/prod/requestMemory.yaml
