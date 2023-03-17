@@ -114,8 +114,8 @@ class GetMemoryData:
         return (
             float(n_entries),
             float(data_mean),
-            float(data_sigma/1048576.0),
-            float(max_data / 1048576.0)
+            float(data_sigma),
+            float(max_data)
         )
 
     def make_table_from_csv(self, buffer, out_file, index_name, comment):
