@@ -70,13 +70,13 @@ class GetMemoryData:
             self.data_path.mkdir()
 
     @staticmethod
-    def make_sum(memory_usage):
+    def make_sum(data_list):
         """ Calculate max RSS.
 
         Parameters
         ----------
         memory_usage : `list`
-            List of maxRSS
+            List of data values
         Returns
         -------
         result : `tuple`
@@ -84,38 +84,38 @@ class GetMemoryData:
 
         """
 
-        max_rss_sum = 0.
-        max_s = 0.
+        data_sum = 0.
+        max_data = 0.
 
         n_entries = 0
-        for s in memory_usage:
+        for s in data_list:
             if isinstance(s, float):
                 n_entries += 1
-                if float(s) >= max_s:
-                    max_s = float(s)
-        " calculate sum of maxRSS "
-        for s in memory_usage:
+                if float(s) >= max_data:
+                    max_data = float(s)
+        " calculate sum of values "
+        for s in data_list:
             if isinstance(s, float):
-                max_rss_sum += float(s)
+                data_sum += float(s)
         if n_entries >= 1:
-            max_rss_mean = max_rss_sum/n_entries
+            data_mean = data_sum/n_entries
         else:
-            max_rss_mean = 0.
+            data_mean = 0.
         dev_sum = 0.
-        for s in memory_usage:
+        for s in data_list:
             if isinstance(s, float):
-                dev = float(s) - max_rss_mean
+                dev = float(s) - data_mean
                 dev_sum += dev*dev
         if n_entries >= 2:
-            max_rss_sigma = math.sqrt(dev_sum/(n_entries - 1.))
+            data_sigma = math.sqrt(dev_sum/(n_entries - 1.))
         else:
-            max_rss_sigma = 0.
+            data_sigma = 0.
 
         return (
             float(n_entries),
-            float(max_rss_mean/1048576.0),
-            float(max_rss_sigma/1048576.0),
-            float(max_s / 1048576.0)
+            float(data_mean),
+            float(data_sigma/1048576.0),
+            float(max_data / 1048576.0)
         )
 
     def make_table_from_csv(self, buffer, out_file, index_name, comment):
@@ -197,16 +197,25 @@ class GetMemoryData:
 
             data_frame = pd.read_parquet(tasks_files[task], engine='pyarrow')
             memory_usage = data_frame.loc[:, 'memory']
+            time_usage = data_frame.loc[:, 'run_time']
             n_quanta, mean_rss, sigma_rss, max_rss = self.make_sum(memory_usage)
+            mean_rss = round(float(mean_rss/1048576.0), 2)
+            sigma_rss = round(float(sigma_rss/1048576.0), 2)
+            max_rss = round(float(max_rss / 1048576.0), 2)
+            n_quanta, mean_cpu, sigma_cpu, max_cpu = self.make_sum(time_usage)
+            n_quanta = round(float(n_quanta), 2)
+            mean_cpu = round(float(mean_cpu), 2)
+            sigma_cpu = round(float(sigma_cpu), 2)
+            max_cpu = round(float(max_cpu), 2)
             if task in self.mem_req:
                 mem_req_mb = self.mem_req[task]
             else:
                 mem_req_mb = 0.
-            task_data.append([task, n_quanta, mean_rss, sigma_rss, max_rss, mem_req_mb])
+            task_data.append([task, n_quanta, mean_rss, sigma_rss, max_rss, mean_cpu, sigma_cpu, max_cpu, mem_req_mb])
         task_data = sorted(task_data, key=lambda x: x[4])
         print(task_data)
 
-        column_names = ['task', 'n_quanta', 'mean MB', 'sigma MB', 'max MB', 'req_mem MB']
+        column_names = ['task', 'n_quanta', 'mean MB', 'sigma MB', 'max MB', 'mean_time', 'sigma_time', 'max_time', 'req_mem MB']
         data_frame = pd.DataFrame(task_data, columns=column_names)
         fig, ax = plt.subplots(figsize=(25, 35))  # set size frame
         ax.xaxis.set_visible(False)  # hide the x-axis
